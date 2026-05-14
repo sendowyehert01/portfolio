@@ -1,116 +1,49 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100..700&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
 
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        overflow: hidden;
-        font-family: 'Roboto Mono';
-    }
-
-    section {
-        height: 33.3vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        font-size: 2rem;
-        font-weight: bold;
-
-        /* Smooth hover animation */
-        transition: all 0.4s ease;
-        cursor: pointer;
-    }
-
-    /* SECTION COLORS */
-    .hero {
-        background: #0f172a;
-        animation: slideRight 1s ease forwards;
-    }
-
-    .about {
-        background: #1e293b;
-        animation: slideRight 2s ease forwards;
-    }
-
-    .projects {
-        background: #334155;
-        animation: slideRight 3s ease forwards;
-    }
-
-    /* HOVER EFFECT */
-    section:hover {
-        filter: brightness(1.3);
-        transform: scale(1.02);
-        box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
-        z-index: 100;
-        position: relative;
-    }
-
-    /* ANIMATIONS */
-
-    @keyframes slideRight {
-        from {
-            transform: translateX(-100%);
-            opacity: 0;
-        }
-
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-
-    .typing {
-        width: 25ch;
-        overflow: hidden;
-        white-space: nowrap;
-        border-right: 3px solid #000;
-        
-        font-family: "Roboto Mono", monospace;
-        font-size: 2rem;
-
-        animation:
-            typing 3s steps(25, end) alternate,
-            blink 1s;
-        }
-
-        @keyframes typing {
-        from {
-            width: 0;
-        }
-        to {
-            width: 25ch;
-        }
-        }
-
-        @keyframes blink {
-        50% {
-            border-color: transparent;
-        }
-    }
-</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
 
 <body>
-
     <section class="hero">
         <div class="typing">
             Hi! I'm Sendo, programmer
         </div>
-    </section>
+                    <div class="shadow"></div>
 
+        <div class="luffy">
+            <div class="hat"></div>
+            <div class="hair"></div>
+
+            <div class="face">
+                <div class="scar"></div>
+
+                <div class="eye left"></div>
+                <div class="eye right"></div>
+
+                <div class="mouth"></div>
+            </div>
+
+            <div class="shirt"></div>
+
+            <div class="arm"></div>
+        </div>
+
+        <div class="wall"></div>
+    </section>
     <section class="about">
         Skills
     </section>
-
     <section class="projects">
         Projects
     </section>
-
 </body>
+
+</html>

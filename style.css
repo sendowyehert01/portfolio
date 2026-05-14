@@ -1,0 +1,335 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    font-family: 'Roboto Mono';
+}
+
+section {
+    height: 33.3vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+
+    /* Smooth hover animation */
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+/* SECTION COLORS */
+.hero {
+    background: #0f172a;
+    animation: slideRight 1s ease forwards;
+}
+
+.about {
+    background: #1e293b;
+    animation: slideRight 2s ease forwards;
+}
+
+.projects {
+    background: #334155;
+    animation: slideRight 3s ease forwards;
+}
+
+/* HOVER EFFECT */
+section:hover {
+    filter: brightness(1.3);
+    transform: scale(1.02);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+    z-index: 100;
+    position: relative;
+}
+
+/* ANIMATIONS */
+
+@keyframes slideRight {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.typing {
+    width: 25ch;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid #000;
+
+    font-family: "Roboto Mono", monospace;
+    font-size: 2rem;
+
+    animation:
+        typing 3s steps(25, end) alternate,
+        blink 1s;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 25ch;
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+/* Right wall */
+.wall {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 110px;
+    height: 100%;
+    background: #0b1120;
+    z-index: 10;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, .5);
+}
+
+/* Character */
+.luffy {
+    position: fixed;
+    top: 50%;
+    right: -220px;
+    width: 240px;
+    height: 340px;
+    transform: translateY(-50%);
+    z-index: 5;
+
+    animation:
+        peekIn 1.7s ease-out 1s forwards,
+        floaty 2.5s ease-in-out infinite 2.7s;
+}
+
+@keyframes peekIn {
+    0% {
+        right: -220px;
+    }
+ 
+    100% {
+        right: 20px;
+    }
+}
+
+@keyframes floaty {
+
+    0%,
+    100% {
+        transform: translateY(-50%) translateX(0);
+    }
+
+    50% {
+        transform: translateY(-50%) translateX(-8px);
+    }
+}
+
+/* Hat */
+.hat {
+    position: absolute;
+    top: 0;
+    left: 58px;
+    width: 120px;
+    height: 40px;
+    background: #d97706;
+    border-radius: 50%;
+    border: 4px solid #111;
+}
+
+.hat::before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    left: -18px;
+    width: 156px;
+    height: 32px;
+    background: #fbbf24;
+    border-radius: 50%;
+    border: 4px solid #111;
+}
+
+.hat::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 0;
+    width: 120px;
+    height: 10px;
+    background: #dc2626;
+    border-radius: 20px;
+}
+
+/* Hair */
+.hair {
+    position: absolute;
+    top: 38px;
+    left: 70px;
+    width: 100px;
+    height: 70px;
+    background: #111;
+    border-radius: 50% 50% 40% 40%;
+}
+
+/* Face */
+.face {
+    position: absolute;
+    top: 55px;
+    left: 72px;
+    width: 96px;
+    height: 110px;
+    background: #f7c59f;
+    border-radius: 45%;
+    border: 4px solid #111;
+    overflow: hidden;
+}
+
+/* Eyes */
+.eye {
+    position: absolute;
+    top: 42px;
+    width: 14px;
+    height: 14px;
+    background: #111;
+    border-radius: 50%;
+
+    animation: blink 5s infinite;
+}
+
+.eye.left {
+    left: 22px;
+}
+
+.eye.right {
+    right: 22px;
+}
+
+@keyframes blink {
+
+    0%,
+    47%,
+    50%,
+    100% {
+        transform: scaleY(1);
+    }
+
+    48% {
+        transform: scaleY(0.1);
+    }
+}
+
+/* Scar */
+.scar {
+    position: absolute;
+    top: 57px;
+    left: 55px;
+    width: 16px;
+    height: 4px;
+    background: #b91c1c;
+    transform: rotate(-15deg);
+    border-radius: 10px;
+}
+
+/* Smile */
+.mouth {
+    position: absolute;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 44px;
+    height: 20px;
+    border-bottom: 4px solid #111;
+    border-radius: 0 0 30px 30px;
+}
+
+/* Shirt */
+.shirt {
+    position: absolute;
+    top: 160px;
+    left: 76px;
+    width: 92px;
+    height: 120px;
+    background: #dc2626;
+    border: 4px solid #111;
+    border-radius: 20px;
+}
+
+.shirt::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 120px;
+    background: #111;
+}
+
+/* Arm */
+.arm {
+    position: absolute;
+    top: 185px;
+    left: 38px;
+    width: 72px;
+    height: 18px;
+    background: #f7c59f;
+    border-radius: 20px;
+    border: 3px solid #111;
+
+    transform-origin: right center;
+    animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+
+    0%,
+    100% {
+        transform: rotate(8deg);
+    }
+
+    50% {
+        transform: rotate(-20deg);
+    }
+}
+
+/* Shadow */
+.shadow {
+    position: fixed;
+    right: 70px;
+    bottom: 70px;
+    width: 140px;
+    height: 30px;
+    background: rgba(0, 0, 0, .35);
+    border-radius: 50%;
+    filter: blur(12px);
+
+    animation: shadowPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes shadowPulse {
+
+    0%,
+    100% {
+        transform: scaleX(1);
+    }
+
+    50% {
+        transform: scaleX(.9);
+    }
+}
