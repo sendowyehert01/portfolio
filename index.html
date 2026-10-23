@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3efe4">
+  <meta name="description" content="A sample developer portfolio with an interactive project gallery.">
+  <title>Rosendo Galang — Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="monogram" href="#home" aria-label="Rosendo Galang home">RG<span>_</span></a>
+    <div class="top-actions">
+      <button class="back-button" type="button" aria-label="Back to portfolio dashboard" title="Back to dashboard" hidden><span aria-hidden="true">←</span><span class="back-label">Dashboard</span></button>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Toggle color theme"><span class="theme-knob"><span class="theme-sun">☼</span><span class="theme-moon">☾</span></span></button>
+    </div>
+  </header>
+
+  <main class="dashboard" id="home" aria-label="Portfolio dashboard">
+    <section class="tile intro" aria-labelledby="intro-title">
+      <div class="intro-content"><span class="tile-kicker">SOFTWARE / AI / PORTFOLIO</span><h1 id="intro-title">Hey there,<br>I’m <em>Rosendo Galang.</em></h1><p class="role-label"><span class="tiny-star">✳</span> Software developer · AI enthusiast</p><span class="intro-foot">Turning good questions into useful software.</span></div>
+      <div class="intro-orbit" aria-hidden="true"><span class="orbit-ring"></span><span class="orbit-dot"></span><span class="orbit-star">✳</span></div>
+    </section>
+
+    <section class="tile expandable about" data-panel="about" tabindex="0" role="button" aria-label="Open About Me">
+      <div class="tile-title"><span class="tile-index">01</span><h2>About me</h2><span class="tile-open" aria-hidden="true">↗</span></div>
+      <div class="tile-summary"><p>I like turning big ideas into clear, helpful digital experiences.</p><span class="learn-more">LEARN MORE <b>→</b></span></div>
+      <div class="panel-content about-panel" hidden>
+        <div class="panel-heading"><span class="tile-kicker">A LITTLE INTRODUCTION</span><h2>Curious mind.<br><em>Practical maker.</em></h2></div>
+        <div class="about-detail"><div class="portrait-placeholder" role="img" aria-label="Abstract portrait illustration"><span class="portrait-sun"></span><span class="portrait-head"></span><span class="portrait-body"></span><span class="portrait-caption">A PERSON WHO LIKES<br>MAKING THINGS WORK</span></div><div class="about-copy"><p>I’m Rosendo, a sample full-stack developer who enjoys making technology feel straightforward. I like learning how people work, finding the useful shape of a problem, and building an experience that feels good to use.</p><p>My interests move between the front end and the systems behind it. I’m always up for learning a new tool, sharing an early prototype, or helping turn a sketch into something real.</p><p>Outside of work, I’m usually walking somewhere new, keeping a notebook of half-formed ideas, or making an overly ambitious playlist.</p><a class="resume-link" href="mailto:rosendo@example.com?subject=Resume%20request">SAMPLE RESUME <span aria-hidden="true">↗</span></a></div></div>
+      </div>
+    </section>
+
+    <section class="tile expandable projects" data-panel="projects" tabindex="0" role="button" aria-label="Open Projects">
+      <div class="tile-title"><span class="tile-index">02</span><h2>Projects</h2><span class="tile-open" aria-hidden="true">↗</span></div>
+      <div class="tile-summary project-teaser"><span class="teaser-shapes" aria-hidden="true"><i></i><i></i><i></i></span><p>Small experiments. Useful systems.</p></div>
+      <div class="panel-content projects-panel" hidden>
+        <div class="panel-heading"><span class="tile-kicker">SELECTED WORK / 03 PROJECTS</span><h2>Made to be <em>useful.</em></h2></div>
+        <div class="project-browser">
+          <nav class="project-nav" aria-label="Choose a project"><ul></ul></nav>
+          <div class="project-gallery" aria-live="polite">
+            <div class="project-title-row"><div><span class="project-counter"></span><h3></h3></div><div class="tech-stack"></div></div>
+            <div class="carousel"><img alt=""><div class="carousel-controls"><button class="carousel-arrow previous" type="button" aria-label="Previous project image">←</button><div class="carousel-dots" aria-label="Choose image"></div><button class="carousel-arrow next" type="button" aria-label="Next project image">→</button></div></div>
+            <div class="project-links"></div>
+          </div>
+          <div class="project-summary"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tile skills" aria-labelledby="skills-title"><div class="tile-title"><span class="tile-index">03</span><h2 id="skills-title">Stack</h2></div><div class="skill-list" aria-label="JavaScript, TypeScript, React, Node.js, Python, SQL, Git, and AI APIs"><span>JS / TS</span><span>REACT</span><span>NODE</span><span>PYTHON</span><span>SQL</span><span>GIT</span><span>APIs</span><span>LLMS</span></div><span class="skills-note">TOOLS I REACH FOR <b>✳</b></span></section>
+
+    <section class="tile expandable contact" data-panel="contact" tabindex="0" role="button" aria-label="Open Contact Me"><div class="tile-title"><span class="tile-index">04</span><h2>Contact</h2><span class="tile-open" aria-hidden="true">↗</span></div><div class="tile-summary contact-teaser"><p>Have something good in mind?</p><span class="contact-teaser-arrow" aria-hidden="true">↗</span></div><div class="panel-content contact-panel" hidden><div class="panel-heading"><span class="tile-kicker">OPEN TO GOOD CONVERSATIONS</span><h2>Let’s make<br><em>something matter.</em></h2></div><div class="contact-detail"><p>Have a project, a question, or a book you think I should read? My inbox is open.</p><a class="email-link" href="mailto:rosendo@example.com">rosendo@example.com <span aria-hidden="true">↗</span></a><div class="social-links"><a href="https://github.com/" target="_blank" rel="noreferrer">GITHUB <span>↗</span></a><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LINKEDIN <span>↗</span></a></div></div></div></section>
+
+  <footer class="tile footer-tile"><span>ROSENDO GALANG <span class="footer-star">✳</span> INDEPENDENT DEVELOPER</span><span>© <span id="year">2025</span></span></footer>
+  </main>
+  <div class="screen-reader-status" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>
