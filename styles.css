@@ -340,3 +340,25 @@ body.dark-mode .theme-toggle{background:#151f31;border-color:#35415b}
 body.dark-mode .theme-knob{background:#edf3ff;color:#6656e8}
 body.dark-mode .footer-tile{border:0;background:transparent;box-shadow:none;color:#8996b3}
 
+/* Technology marks in the Stack tile. */
+.skill-list{gap:8px}
+.skill-list>.skill-chip{display:inline-flex;align-items:center;gap:6px;border:1px solid #d1daeb;border-radius:5px;background:#f8faff;color:#435472;font:700 9px var(--sans);letter-spacing:0;padding:6px 8px}
+.skill-chip>span{font:inherit;color:inherit}
+.skill-logo{width:19px;height:19px;flex:0 0 19px;overflow:visible}
+.skill-logo text{font:700 11px Arial,sans-serif;fill:#fff}
+.js-logo rect{fill:#d6a900}.ts-logo rect{fill:#3178c6}.node-logo path{fill:#43853d}.node-logo text{font-size:8px}.react-logo{fill:none;stroke:#159cbd;stroke-width:2}.react-logo circle{fill:#159cbd;stroke:none}
+.python-logo{fill:#3676a8}.python-logo path+path{fill:#ffd34e}.sql-logo{fill:none;stroke:#4778ad;stroke-width:2}.git-logo{fill:none;stroke:#e84d31;stroke-width:2.5}.git-logo circle{fill:#e84d31;stroke:none}.api-logo{fill:none;stroke:#6556f5;stroke-width:2.5}.api-logo circle{fill:#55dff6;stroke:#6556f5;stroke-width:2}.llm-logo{fill:none;stroke:#7866d8;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+body.dark-mode .skill-list>.skill-chip{background:#151f31;border-color:#35415b;color:#d0daf0}
+@media(max-width:600px){.skill-list{gap:6px}.skill-list>.skill-chip{font-size:8px;padding:5px 7px}.skill-logo{width:17px;height:17px;flex-basis:17px}}
+.dashboard{grid-template-rows:minmax(225px,1.12fr) minmax(165px,.82fr) minmax(235px,.95fr) 27px}
+.skill-groups{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 16px;margin:28px 0 18px}
+.skill-group{min-width:0;text-align:left}
+.skill-group h3{margin:0 0 5px;color:#657491;font:7px var(--mono);letter-spacing:.1em}
+.skill-group .skill-list{justify-content:flex-start;gap:4px;margin:0}
+.skill-group .skill-chip{font-size:8px;padding:4px 6px;gap:4px}
+.skill-group .skill-logo{width:16px;height:16px;flex-basis:16px}
+.html-logo{fill:#e44d26}.css-logo{fill:#2862e9}.vue-logo{fill:#42b883}.vue-logo path+path{fill:#35495e}.alpine-logo{fill:#77c1d2}.next-logo{fill:#111}.express-logo{fill:#464646}.express-logo text,.next-logo text{font-size:9px}.nest-logo{fill:#e0234e}.php-logo{fill:#777bb3}.php-logo ellipse{fill:#777bb3}.php-logo text{font-size:8px}.laravel-logo{fill:none;stroke:#f05340;stroke-width:3;stroke-linejoin:round}.ci-logo{fill:#dd4814}.ci-logo text{font-size:9px}.java-logo,.spring-logo,.mysql-logo{fill:none;stroke:#4a6b86;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.spring-logo{stroke:#6db33f}.mongo-logo{fill:#47a248}.mongo-logo path{stroke:#fff;stroke-width:1}.mssql-logo{fill:none;stroke:#c83a3a;stroke-width:2}.chatgpt-logo,.claude-logo,.grok-logo,.codex-logo{fill:none;stroke:#6556f5;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.chatgpt-logo{stroke:#159c83}.claude-logo{stroke:#c8753d}.grok-logo{stroke:#111}.codex-logo{stroke:#6556f5}.html-logo text,.css-logo text{font:700 13px Arial,sans-serif;fill:#fff}
+body.dark-mode .skill-group h3{color:#aab7d2}.next-logo circle{fill:#f8faff}body.dark-mode .next-logo circle{fill:#111}
+@media(max-width:850px){.dashboard{grid-template-rows:minmax(215px,1fr) minmax(165px,.8fr) minmax(250px,.95fr) 26px}}
+@media(max-width:600px){.dashboard{grid-template-rows:none}.skills{min-height:350px}.skill-groups{gap:12px 10px;margin:30px 0 20px}.skill-group .skill-chip{font-size:8px}.skill-group .skill-logo{width:15px;height:15px;flex-basis:15px}}
+
