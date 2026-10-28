@@ -1,22 +1,57 @@
 (() => {
   'use strict';
 
-  // Portfolio content. Replace the sample contact and social URLs with your own.
-  const EMAIL = 'rosendo@example.com';
+  // Portfolio content from regalang_resume.pdf.
+  const EMAIL = 'rsndo.galang@gmail.com';
+  const RESUME = 'regalang_resume.pdf';
   const projects = [
-    { name: 'Prompt Lab', slug: 'prompt-lab', type: 'AI prompt workspace', summary: 'A focused workspace for shaping, testing, and organizing prompts. Save useful versions, compare outputs, and keep experiments easy to revisit.', tech: ['React', 'Node.js', 'LLM API'], slides: ['Workspace overview', 'Prompt editor', 'Output comparison', 'Saved library'] },
-    { name: 'Vector Search', slug: 'vector-search', type: 'Semantic search dashboard', summary: 'A concept search interface for exploring a document collection with natural language, useful filters, and clear source references.', tech: ['TypeScript', 'Python', 'Vector DB'], slides: ['Search overview', 'Results explorer', 'Source details'] },
-    { name: 'Agent Desk', slug: 'agent-desk', type: 'AI workflow builder', summary: 'A visual workspace for connecting small AI tasks into repeatable workflows, with run history and helpful status at every step.', tech: ['Next.js', 'Python', 'AI agents'], slides: ['Flow canvas', 'Agent settings', 'Run history', 'Task details'] }
+    {
+      name: 'Records Management System', slug: 'records-management', type: 'Internal records routing', organisation: 'Governance Commission for GOCCs',
+      summary: 'Led development of the agency’s internal Records Management System. Digitized routing for 1,000+ incoming, outgoing, internal, and acknowledgement receipts monthly, cutting manual processing by 70%.',
+      tags: ['Records routing', 'Workflow digitization'],
+      slides: [
+        { title: 'System overview', metric: '1,000+', metricLabel: 'RECEIPTS ROUTED MONTHLY', headline: 'Digitizing agency records.', points: ['Incoming and outgoing records', 'Internal and acknowledgement receipts', 'Digitized document routing'] },
+        { title: 'Impact & delivery', metric: '70%', metricLabel: 'LESS MANUAL PROCESSING', headline: 'Improving records workflows.', points: ['Replaced manual routing with an internal application', 'Handled 1,000+ receipts per month', 'Led development of the agency system'] }
+      ]
+    },
+    {
+      name: 'ServiceDesk Management System', slug: 'servicedesk-management', type: 'HR service requests', organisation: 'Governance Commission for GOCCs',
+      summary: 'Led development of an internal ServiceDesk Management System for HR service requests from 400+ internal and external employees. The application replaced manual, email-based requests.',
+      tags: ['HR services', 'Request management'],
+      slides: [
+        { title: 'System overview', metric: '400+', metricLabel: 'INTERNAL & EXTERNAL EMPLOYEES', headline: 'HR requests in one system.', points: ['Created an internal HR service request application', 'Served internal and external employees', 'Led development for the agency'] },
+        { title: 'Impact & delivery', metric: 'HR', metricLabel: 'SERVICE REQUEST WORKFLOW', headline: 'Digitizing service requests.', points: ['Replaced manual email-based requests', 'Supported service requests for 400+ employees', 'Built an internal agency management system'] }
+      ]
+    },
+    {
+      name: 'GCG Website', slug: 'gcg-website', type: 'Public-facing agency website', organisation: 'Governance Commission for GOCCs',
+      summary: 'Contributed 10+ pages, features, and modules to the agency’s public-facing website, streamlining access to services and centralizing scattered information. Improved performance and maintainability through modular code and API integration, and reduced walk-in inquiries.',
+      tags: ['Public services', 'API integration'],
+      slides: [
+        { title: 'Website overview', metric: '10+', metricLabel: 'PAGES / FEATURES / MODULES', headline: 'Making services accessible.', points: ['Contributed to the public-facing agency website', 'Streamlined access to agency services', 'Centralized previously scattered information'] },
+        { title: 'Impact & delivery', metric: 'API', metricLabel: 'INTEGRATION & MODULAR CODE', headline: 'Improving the agency website.', points: ['Enhanced website performance and maintainability', 'Used modular code structure and API integration', 'Reduced walk-in inquiries'] }
+      ]
+    },
+    {
+      name: 'Membership Management System', slug: 'membership-management', type: 'Membership data management', organisation: 'Automobile Association of the Philippines',
+      summary: 'Led development of a Membership Management System that stores members’ personal data and replaces spreadsheet-based tracking. Also enhanced payment method integration as a Junior Full-Stack Software Developer.',
+      tags: ['Member records', 'Payment integration'],
+      slides: [
+        { title: 'System overview', metric: 'Members', metricLabel: 'PERSONAL DATA MANAGEMENT', headline: 'Organizing membership data.', points: ['Designed a membership data application', 'Replaced spreadsheet-based tracking', 'Led development for the Automobile Association'] },
+        { title: 'Impact & delivery', metric: 'Payments', metricLabel: 'PAYMENT METHOD INTEGRATION', headline: 'Connecting membership workflows.', points: ['Enhanced payment method integration', 'Developed the full-stack membership application', 'Centralized members’ personal data'] }
+      ]
+    }
   ];
   const stack = [
-    { id: 'frontend', name: 'Frontend', tools: [['HTML', '5'], ['CSS', '3'], ['JavaScript', 'JS'], ['React.js', 'Re'], ['Vue.js', 'V'], ['Alpine.js', 'Al'], ['Next.js', 'N']] },
-    { id: 'backend', name: 'Backend', tools: [['Express.js', 'ex'], ['Nest.js', 'Ne'], ['PHP', 'php'], ['Laravel', 'La'], ['CodeIgniter', 'CI'], ['Java', 'J'], ['Spring Boot', 'Sp']] },
-    { id: 'databases', name: 'Databases', tools: [['MongoDB', 'Mo'], ['MySQL', 'My'], ['MS SQL', 'SQL']] },
-    { id: 'ai-tools', name: 'AI tools', tools: [['ChatGPT', 'AI'], ['Claude', 'Cl'], ['Grok', 'Gr'], ['Codex', 'Cx']] }
+    { id: 'frontend', name: 'Frontend', tools: [['HTML', '5'], ['CSS', '3'], ['JavaScript', 'JS'], ['TypeScript', 'TS'], ['React.js', 'Re'], ['Next.js', 'N'], ['Alpine.js', 'Al'], ['Vue.js', 'V'], ['Bootstrap', 'B'], ['Tailwind CSS', 'TW']] },
+    { id: 'backend', name: 'Backend', tools: [['Node.js', 'No'], ['Express.js', 'ex'], ['Nest.js', 'Ne'], ['PHP', 'php'], ['Laravel', 'La']] },
+    { id: 'databases', name: 'Databases', tools: [['MongoDB', 'Mo'], ['MySQL', 'My']] },
+    { id: 'tools-practices', name: 'Tools & practices', tools: [['Git', 'Gi'], ['Postman', 'Po'], ['JIRA', 'Ji'], ['QA Testing', 'QA'], ['Agile/Scrum', 'Ag'], ['AWS', 'AWS']] },
+    { id: 'ai-tools', name: 'AI tools & practices', tools: [['ChatGPT', 'AI'], ['Claude', 'Cl'], ['Codex', 'Cx'], ['Windsurf', 'Wi'], ['AI-assisted coding', 'AI'], ['Prompt engineering', 'PE'], ['AI-powered debugging', 'DB'], ['Code optimization', 'CO']] }
   ];
   const views = ['terminal', 'about', 'projects', 'stack', 'contact'];
   const themes = ['cyan', 'amber', 'green'];
-  const commands = ['help', 'about', 'projects', 'stack', 'contact', 'home', 'ls', 'cd', 'cat', 'open', 'pwd', 'whoami', 'date', 'echo', 'clear', 'theme', 'sound', 'fullscreen', 'reboot'];
+  const commands = ['help', 'about', 'projects', 'stack', 'contact', 'resume', 'home', 'ls', 'cd', 'cat', 'open', 'pwd', 'whoami', 'date', 'echo', 'clear', 'theme', 'sound', 'fullscreen', 'reboot'];
   const $ = (selector) => document.querySelector(selector);
   const input = $('#commandInput');
   const output = $('#terminalOutput');
@@ -89,68 +124,37 @@
     } catch { /* Sound must never interrupt navigation. */ }
   }
 
-  // Code-native concept previews; no image downloads or generated assets required.
-  function makeProjectArtwork(project, slide) {
+  // Project briefs present the résumé's documented scope and results.
+  function makeProjectArtwork(project, slideIndex) {
     const accent = getComputedStyle(document.body).getPropertyValue('--accent').trim();
-    const escapeText = (value) => String(value).replace(/&(?!(?:amp|lt|gt|quot|apos);)/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const slide = project.slides[slideIndex];
+    const escapeText = (value) => String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     const text = (x, y, value, size = 13, fill = '#a9bdc5', extra = '') => `<text x="${x}" y="${y}" fill="${fill}" font-size="${size}" ${extra}>${escapeText(value)}</text>`;
     const rect = (x, y, w, h, fill = '#111e27', stroke = '#263e49', radius = 4) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${radius}" fill="${fill}" stroke="${stroke}"/>`;
-    const lines = (x, y, widths, color = '#334b58') => widths.map((w, i) => `<rect x="${x}" y="${y + i * 16}" width="${w}" height="5" rx="2" fill="${color}"/>`).join('');
-    const tag = (x, y, value, width = 84) => rect(x, y, width, 23, '#162a32') + text(x + 9, y + 15, value, 9, accent);
-    let content = '';
-
-    if (project.slug === 'prompt-lab') {
-      if (slide === 0) {
-        content = ['SAVED PROMPTS', 'EXPERIMENTS', 'AVG. SCORE'].map((label, i) => rect(207 + i * 232, 156, 218, 72) + text(224 + i * 232, 178, label, 9) + text(224 + i * 232, 211, ['24', '08', '92%'][i], 25, accent)).join('');
-        content += rect(207, 245, 440, 196) + text(225, 273, 'Your next idea starts here.', 17, '#dde8ec') + text(225, 295, 'Turn a rough thought into a reusable prompt.', 10) + rect(225, 312, 404, 72, '#0b151e') + text(240, 337, 'Design a thoughtful onboarding experience', 11) + text(240, 357, 'for a creative developer workspace…', 11) + tag(225, 400, '+ NEW PROMPT', 118);
-        content += rect(661, 245, 242, 196) + text(679, 273, 'RECENT ACTIVITY', 10, accent) + [0, 1, 2].map((i) => text(679, 304 + i * 45, ['UX writing assistant', 'Code review partner', 'Research summarizer'][i], 11, '#c5d6df') + text(679, 321 + i * 45, ['Edited just now', 'Version 3 · saved', 'Ready to experiment'][i], 9, '#647f8b')).join('');
-      } else if (slide === 1) {
-        content = rect(207, 156, 420, 285) + text(226, 185, 'PROMPT EDITOR', 10, accent) + tag(497, 170, 'v.03', 55) + text(226, 219, '&lt;system&gt;', 12, accent) + text(242, 244, 'You are a thoughtful design partner.', 11) + text(242, 267, 'Consider clarity, accessibility,', 11) + text(242, 290, 'and the person behind the screen.', 11) + text(226, 316, '&lt;/system&gt;', 12, accent) + lines(227, 342, [320, 264, 294]) + tag(226, 399, 'RUN PROMPT →', 126);
-        content += rect(643, 156, 260, 285) + text(661, 185, 'OUTPUT PREVIEW', 10, accent) + text(661, 221, 'A clearer first impression.', 13, '#dde8ec') + lines(661, 244, [213, 202, 187, 214, 173]) + text(661, 349, '✓ Clear and actionable', 11, accent) + text(661, 372, '✓ Human-centered tone', 11, accent) + tag(661, 402, '1.2s / 348 tokens', 158);
-      } else if (slide === 2) {
-        content = [0, 1].map((i) => rect(207 + i * 355, 156, 339, 285) + tag(224 + i * 355, 173, i ? 'VERSION B' : 'VERSION A', 97) + text(225 + i * 355, 229, i ? 'More context. Better clarity.' : 'A first draft worth refining.', 14, '#dde8ec') + lines(225 + i * 355, 253, [288, 272, 245, 280, 259, 206]) + text(225 + i * 355, 381, 'QUALITY SCORE', 9) + rect(225 + i * 355, 396, 280, 7, '#20343e', 'none', 2) + rect(225 + i * 355, 396, i ? 263 : 210, 7, accent, 'none', 2) + text(225 + i * 355, 429, i ? '94 / 100' : '75 / 100', 12, accent)).join('');
-      } else {
-        content = rect(207, 156, 696, 39, '#0d1820') + text(225, 180, '⌕  Find a saved prompt…', 12, '#647f8b') + ['Design critique partner', 'Explain this code', 'Write a better brief', 'Research synthesis'].map((name, i) => rect(207, 209 + i * 57, 696, 46) + text(225, 237 + i * 57, name, 12, '#d1e0e6') + tag(640, 221 + i * 57, ['DESIGN', 'CODE', 'WRITING', 'RESEARCH'][i], 96) + text(814, 237 + i * 57, `v.0${i + 1}  ↗`, 10, accent)).join('');
-      }
-    } else if (project.slug === 'vector-search') {
-      content = rect(207, 156, 696, 43, '#0d1820') + text(225, 183, '⌕  How do we make complex tools feel simple?', 13, '#d1e0e6') + tag(800, 166, 'SEARCH', 85);
-      if (slide === 2) {
-        content += rect(207, 216, 447, 225) + text(225, 245, 'Designing for understanding', 18, '#dde8ec') + text(225, 266, 'SOURCE DOCUMENT / CHAPTER 03', 9, accent) + lines(225, 290, [405, 391, 354, 405, 376, 312, 396]) + rect(225, 367, 391, 25, '#1c343b', 'none') + text(234, 384, 'Good interfaces reduce the distance to an idea.', 10, accent);
-        content += rect(670, 216, 233, 225) + text(688, 244, 'SOURCE CONTEXT', 10, accent) + text(688, 282, 'understanding.pdf', 12, '#c5d6df') + text(688, 308, 'Pages 12–14', 11) + text(688, 334, 'Relevance: 0.94', 11) + tag(688, 385, 'VIEW CITATION ↗', 163);
-      } else {
-        content += text(208, 226, slide ? 'RESULTS EXPLORER / 03 MATCHES' : 'SEMANTIC MATCHES / 03 SOURCES', 10, accent);
-        content += ['Designing for understanding', 'The useful shape of a problem', 'A more thoughtful interface'].map((title, i) => rect(207, 242 + i * 66, 696, 57) + text(226, 264 + i * 66, title, 13, '#d1e0e6') + text(226, 283 + i * 66, ['Clear systems begin with clear questions.', 'Understand how people work before building.', 'Make the next useful action easy to find.'][i], 10) + tag(793, 258 + i * 66, ['0.94', '0.89', '0.86'][i], 86)).join('');
-      }
-    } else {
-      if (slide === 0) {
-        content = `<defs><pattern id="dots" width="17" height="17" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".7" fill="#2b424e"/></pattern></defs>` + rect(207, 156, 696, 285, 'url(#dots)') + `<path d="M389 278h39v-43h58m-58 43v52h58m172-95h42v43h38m-80 52h42v-52" stroke="${accent}" stroke-width="1.5" fill="none"/>`;
-        const node = (x, y, title, desc, badge) => rect(x, y, 169, 72, '#12212a', '#41616c') + text(x + 12, y + 23, badge, 8, accent) + text(x + 12, y + 43, title, 12, '#dde8ec') + text(x + 12, y + 59, desc, 8);
-        content += node(226, 242, 'Receive input', 'A question worth exploring', '01 / TRIGGER') + node(486, 199, 'Research agent', 'Find the useful context', '02 / RESEARCH') + node(486, 295, 'Draft agent', 'Shape the first response', '03 / CREATE') + node(719, 242, 'Review & deliver', 'Make every step useful', '04 / OUTPUT') + tag(226, 398, '● READY TO RUN', 132);
-      } else if (slide === 1) {
-        content = rect(207, 156, 439, 285) + text(226, 187, 'CONFIGURE AGENT', 11, accent) + ['Agent name', 'Model', 'System instructions'].map((label, i) => text(226, 221 + i * 65, label, 10) + rect(226, 232 + i * 65, 400, i === 2 ? 65 : 32, '#0c1820') + text(239, 253 + i * 65, ['Research partner', 'Select a model  ↓', 'Find context. Cite sources. Stay curious.'][i], 11, '#c5d6df')).join('');
-        content += rect(661, 156, 242, 285) + text(680, 187, 'CONNECTED TOOLS', 10, accent) + ['Document search', 'Notes workspace', 'Source references'].map((title, i) => tag(680, 212 + i * 48, `✓ ${title}`, 203)).join('') + tag(680, 397, 'SAVE AGENT →', 132);
-      } else if (slide === 2) {
-        content = rect(207, 156, 696, 285) + text(226, 184, 'RECENT RUNS', 11, accent) + text(226, 219, 'WORKFLOW', 9) + text(595, 219, 'DURATION', 9) + text(766, 219, 'STATUS', 9) + ['Research & summarize', 'Review a first draft', 'Find relevant sources', 'Outline a new idea'].map((title, i) => `<path d="M225 ${232 + i * 48}h659" stroke="#263e49"/>` + text(226, 262 + i * 48, title, 12, '#c5d6df') + text(595, 262 + i * 48, `${[3.2, 2.1, 1.8, 4.6][i]}s`, 11) + tag(766, 245 + i * 48, '✓ COMPLETE', 116)).join('');
-      } else {
-        content = rect(207, 156, 310, 285) + text(226, 186, 'TASK / RESEARCH & SUMMARIZE', 10, accent) + text(226, 226, '✓ Receive input', 13, '#c5d6df') + text(226, 265, '✓ Find relevant documents', 13, '#c5d6df') + text(226, 304, '✓ Draft a clear response', 13, '#c5d6df') + text(226, 343, '✓ Verify source references', 13, '#c5d6df') + tag(226, 399, '4 / 4 STEPS COMPLETE', 198);
-        content += rect(534, 156, 369, 285) + text(553, 186, 'FINAL OUTPUT', 10, accent) + text(553, 228, 'An idea with a useful next step.', 15, '#dde8ec') + lines(553, 254, [330, 311, 284, 325, 291, 269, 321]) + tag(553, 400, '3 SOURCES ATTACHED', 177);
-      }
-    }
-    const navLabels = project.slug === 'agent-desk' ? ['Workflow', 'Agents', 'Run history', 'Task details'] : project.slug === 'vector-search' ? ['Search', 'Explorer', 'Sources'] : ['Overview', 'Editor', 'Compare', 'Library'];
-    const sidebar = navLabels.map((label, i) => (i === slide ? rect(37, 149 + i * 42, 144, 33, '#172b33', 'none') : '') + text(51, 171 + i * 42, label, 11, i === slide ? accent : '#647f8b')).join('');
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 498"><rect width="960" height="498" fill="#090f15"/><g font-family="monospace">${rect(20, 20, 920, 458, '#0c151e', '#263e49', 7)}<path d="M20 61h920M194 61v417" stroke="#263e49"/><circle cx="40" cy="41" r="4" fill="#425b65"/><circle cx="54" cy="41" r="4" fill="#425b65"/><circle cx="68" cy="41" r="4" fill="${accent}"/>${text(91, 45, `${project.slug} / workspace`, 10)}${text(841, 45, '● SYNCED', 9, accent)}${rect(39, 83, 27, 27, '#1b343e', 'none')}${text(46, 102, project.name[0], 16, accent)}${text(77, 102, project.name, 12, '#d1e0e6')}${sidebar}${text(40, 439, 'CONCEPT BUILD', 8, '#4e6b78')}${text(40, 457, 'SAMPLE UI / 2026', 8, '#4e6b78')}${text(208, 106, project.slides[slide], 22, '#dde8ec', 'letter-spacing="-1"')}${text(208, 129, project.type, 10)}${content}</g></svg>`;
+    const wrappedText = (x, y, value, maxLength, size, fill = '#a9bdc5') => {
+      const lines = [''];
+      value.split(' ').forEach((word) => {
+        const last = lines.length - 1;
+        if (lines[last] && lines[last].length + word.length + 1 > maxLength) lines.push(word);
+        else lines[last] += `${lines[last] ? ' ' : ''}${word}`;
+      });
+      return lines.map((line, index) => text(x, y + index * (size + 7), line, size, fill)).join('');
+    };
+    const points = slide.points.map((point, index) => rect(385, 210 + index * 64, 27, 27, '#162a32', 'none') + text(391, 229 + index * 64, `0${index + 1}`, 12, accent) + wrappedText(430, 228 + index * 64, point, 53, 13, '#c5d6df')).join('');
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 498"><title>${escapeText(project.name)} — ${escapeText(slide.title)}</title><rect width="960" height="498" fill="#090f15"/><g font-family="monospace">${rect(20, 20, 920, 458, '#0c151e', '#263e49', 7)}${text(48, 51, 'PROJECT BRIEF / HIGHLIGHTS', 11, accent)}${text(718, 51, 'ROSENDO E. GALANG', 11)}<path d="M20 69h920M48 156h864" stroke="#263e49"/>${text(48, 110, project.name, 27, '#dde8ec')}${text(48, 137, project.organisation, 13)}${rect(48, 180, 300, 235)}${text(70, 249, slide.metric, 46, accent)}${wrappedText(70, 277, slide.metricLabel, 31, 10)}<path d="M70 315h256" stroke="#263e49"/>${wrappedText(70, 351, slide.headline, 25, 17, '#dde8ec')}${rect(366, 180, 546, 235)}${points}${text(48, 449, project.type, 12)}${text(912, 449, slide.title.toUpperCase(), 11, accent, 'text-anchor="end"')}</g></svg>`;
     return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
   }
 
   const filesystem = new Map([
     ['', [
       { name: 'about.md', type: 'file', view: 'about', label: 'MARKDOWN' },
-      { name: 'projects', type: 'directory', label: '03 PROJECTS' },
-      { name: 'stack', type: 'directory', label: '04 CATEGORIES' },
+      { name: 'projects', type: 'directory', label: `${String(projects.length).padStart(2, '0')} PROJECTS` },
+      { name: 'stack', type: 'directory', label: `${String(stack.length).padStart(2, '0')} CATEGORIES` },
       { name: 'contact.json', type: 'file', view: 'contact', label: 'CONTACT' },
+      { name: RESUME, type: 'file', resume: true, label: 'PDF / RESUME' },
       { name: 'README.md', type: 'file', readme: true, label: 'START HERE' }
     ]],
-    ['projects', projects.map((project, index) => ({ name: `${project.slug}.project`, type: 'file', project: index, label: 'CONCEPT / UI' }))],
+    ['projects', projects.map((project, index) => ({ name: `${project.slug}.project`, type: 'file', project: index, label: 'PROJECT / BRIEF' }))],
     ['stack', stack.map((group) => ({ name: group.id, type: 'directory', label: `${String(group.tools.length).padStart(2, '0')} TOOLS` }))]
   ]);
   stack.forEach((group) => filesystem.set(`stack/${group.id}`, group.tools.map(([name]) => ({ name: `${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.tool`, type: 'file', tool: name, group: group.name, label: 'TECHNOLOGY' }))));
@@ -204,14 +208,20 @@
     $('#fileCount').textContent = `${String(files.length).padStart(2, '0')} ITEMS`;
     $('#directoryUp').disabled = !directory;
     $('#fileList').replaceChildren(...files.map((file) => {
-      const button = element('button', `file-button${file.type === 'file' ? ' is-file' : ''}`);
-      button.type = 'button';
+      const button = element(file.resume ? 'a' : 'button', `file-button${file.type === 'file' ? ' is-file' : ''}`);
+      if (file.resume) {
+        button.href = RESUME;
+        button.target = '_blank';
+        button.rel = 'noopener noreferrer';
+      } else {
+        button.type = 'button';
+        const selected = file.project !== undefined ? file.project === state.project : Boolean(file.view && file.view === state.view);
+        button.setAttribute('aria-pressed', String(selected));
+        button.addEventListener('click', () => runCommand(`open /home/rosendo/${directory ? `${directory}/` : ''}${file.name}`));
+      }
       button.title = file.name;
-      const selected = file.project !== undefined ? file.project === state.project : Boolean(file.view && file.view === state.view);
-      button.setAttribute('aria-pressed', String(selected));
       button.setAttribute('aria-label', `Open ${file.name}${file.type === 'directory' ? ' directory' : ''}`);
       button.append(makeIcon(file.type === 'directory' ? 'folder' : file.project !== undefined || file.tool ? 'code' : 'file'), element('span', 'file-name', `${file.name}${file.type === 'directory' ? '/' : ''}`), element('span', 'file-type', file.label));
-      button.addEventListener('click', () => runCommand(`open /home/rosendo/${directory ? `${directory}/` : ''}${file.name}`));
       return button;
     }));
   }
@@ -253,23 +263,36 @@
     } else if (entry.view) {
       navigate(entry.view, { focus });
       commandEntry.append(element('p', 'output-text', `Opened ~/${entry.name}`));
+    } else if (entry.resume) {
+      printOutput(commandEntry, 'Rosendo E. Galang — résumé\nView or download the PDF below.');
+      const actions = element('div', 'resume-links');
+      const viewLink = element('a', 'outline-button', 'VIEW RESUME');
+      viewLink.href = RESUME;
+      viewLink.target = '_blank';
+      viewLink.rel = 'noopener noreferrer';
+      const downloadLink = element('a', 'outline-button', 'DOWNLOAD RESUME');
+      downloadLink.href = RESUME;
+      downloadLink.download = 'Rosendo-E-Galang-Resume.pdf';
+      actions.append(viewLink, downloadLink);
+      commandEntry.append(actions);
     } else if (entry.tool) {
       printOutput(commandEntry, `${entry.tool}\nCategory: ${entry.group}\nPart of Rosendo's development toolkit.\n\nUse stack to see all technologies, or cd .. to return.`);
     } else {
-      printOutput(commandEntry, "ROSENDO.OS / PERSONAL WORKSTATION\n\nWelcome to Rosendo Galang's developer portfolio.\nExplore the tabs, click a file, or type a command.\n\nabout     A little introduction\nprojects  Three concept project galleries\nstack     The tools behind the ideas\ncontact   Start a conversation\nhelp      All available commands\n\nShortcuts: / to focus the terminal, ↑/↓ for history, Tab to complete.\nThis portfolio uses a virtual filesystem in your browser.");
+      printOutput(commandEntry, `ROSENDO.OS / PERSONAL WORKSTATION\n\nWelcome to Rosendo E. Galang's developer portfolio.\nFull-Stack Software Engineer · 2 years of experience\nExplore the tabs, click a file, or type a command.\n\nabout     Experience, education, and certification\nprojects  ${projects.length} projects and their results\nstack     Technologies, tools, and practices\ncontact   Email, phone, and LinkedIn\nresume    View or download the résumé PDF\nhelp      All available commands\n\nShortcuts: / to focus the terminal, ↑/↓ for history, Tab to complete.\nThis portfolio uses a virtual filesystem in your browser.`);
     }
   }
 
   function renderProject() {
     const project = projects[state.project];
-    $('#projectType').textContent = project.type;
+    const slide = project.slides[state.slide];
+    $('#projectType').textContent = `${project.type} · ${project.organisation}`;
     $('#projectTitle').textContent = project.name;
     $('#projectSummary').textContent = project.summary;
-    $('#projectTech').replaceChildren(...project.tech.map((tech) => element('span', '', tech)));
+    $('#projectTech').replaceChildren(...project.tags.map((tag) => element('span', '', tag)));
     const image = makeProjectArtwork(project, state.slide);
     $('#projectImage').src = image;
-    $('#projectImage').alt = `${project.name}: ${project.slides[state.slide]}, concept interface preview`;
-    $('#slideLabel').textContent = `${String(state.slide + 1).padStart(2, '0')} / ${String(project.slides.length).padStart(2, '0')} — ${project.slides[state.slide]}`;
+    $('#projectImage').alt = `${project.name}: ${slide.title}. ${slide.metric} ${slide.metricLabel.toLowerCase()}. ${slide.points.join('. ')}.`;
+    $('#slideLabel').textContent = `${String(state.slide + 1).padStart(2, '0')} / ${String(project.slides.length).padStart(2, '0')} — ${slide.title}`;
     $('#previousSlide').disabled = state.slide === 0;
     $('#nextSlide').disabled = state.slide === project.slides.length - 1;
     [...$('#projectSelector').children].forEach((button, index) => button.setAttribute('aria-pressed', String(index === state.project)));
@@ -283,7 +306,7 @@
     }
     [...$('#slideDots').children].forEach((button, index) => {
       button.setAttribute('aria-current', String(index === state.slide));
-      button.setAttribute('aria-label', `Show ${project.name} image ${index + 1}: ${project.slides[index]}`);
+      button.setAttribute('aria-label', `Show ${project.name} brief ${index + 1}: ${project.slides[index].title}`);
     });
     $('#previewTitle').textContent = project.name;
     $('#dialogImage').src = image;
@@ -311,7 +334,7 @@
     if ($('#previewDialog').open) return;
     $('#previewDialog').showModal();
     document.body.classList.add('has-dialog');
-    logEvent('Project preview expanded');
+    logEvent('Project brief expanded');
   }
   function renderStack() {
     $('#stackGroups').replaceChildren(...stack.map((group, index) => {
@@ -421,7 +444,7 @@
       case 'help': case '?': {
         entry.append(element('p', 'output-text', 'AVAILABLE COMMANDS / click any command to run it'));
         const table = element('div', 'command-table');
-        [['about', 'A little introduction'], ['projects', 'Explore the project galleries'], ['stack', 'Browse the development toolkit'], ['contact', 'Email and social links'], ['ls', 'List the current directory'], ['cd ~/projects', 'Change directory (also: cd ..)'], ['cat ~/README.md', 'Read a portfolio file'], ['open prompt-lab', 'Open a project or file'], ['pwd', 'Print the current directory'], ['whoami', 'The human behind the code'], ['date', 'Your local date and time'], ['echo hello', 'Print a message'], ['theme amber', 'Themes: cyan / amber / green'], ['sound on', 'Optional sounds: on / off'], ['fullscreen', 'Toggle fullscreen'], ['clear', 'Clear the terminal'], ['home', 'Return to the welcome screen'], ['reboot', 'Restart the portfolio interface']].forEach(([cmd, description]) => {
+        [['about', 'Experience, education, and certification'], ['projects', 'Explore projects and their results'], ['stack', 'Browse the development toolkit'], ['contact', 'Email, phone, and LinkedIn'], ['resume', 'View or download the résumé PDF'], ['ls', 'List the current directory'], ['cd ~/projects', 'Change directory (also: cd ..)'], ['cat ~/README.md', 'Read a portfolio file'], ['open records-management', 'Open a project or file'], ['pwd', 'Print the current directory'], ['whoami', 'The human behind the code'], ['date', 'Your local date and time'], ['echo hello', 'Print a message'], ['theme amber', 'Themes: cyan / amber / green'], ['sound on', 'Optional sounds: on / off'], ['fullscreen', 'Toggle fullscreen'], ['clear', 'Clear the terminal'], ['home', 'Return to the welcome screen'], ['reboot', 'Restart the portfolio interface']].forEach(([cmd, description]) => {
           const row = element('div');
           const button = element('button', '', cmd);
           button.type = 'button';
@@ -441,7 +464,8 @@
         break;
       case 'clear': case 'cls': clearTerminal(); break;
       case 'pwd': printOutput(entry, cwd()); break;
-      case 'whoami': printOutput(entry, 'Rosendo Galang\nSoftware developer\n\nA curious mind. A practical maker.\nTurning good questions into useful software.'); break;
+      case 'whoami': printOutput(entry, `Rosendo E. Galang\nFull-Stack Software Engineer\n2 years of experience\nBiñan City, Laguna, Philippines\n\nWeb applications, internal management systems, and service desk solutions.\nAPI integration and workflow digitization.\n\nEmail: ${EMAIL}\nUse about for experience, education, and certification.`); break;
+      case 'resume': openEntry({ type: 'file', resume: true, name: RESUME }, entry); break;
       case 'date': printOutput(entry, new Date().toLocaleString(undefined, { dateStyle: 'full', timeStyle: 'long' })); break;
       case 'echo': printOutput(entry, argument); break;
       case 'ls': {
