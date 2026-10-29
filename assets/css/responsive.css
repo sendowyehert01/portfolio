@@ -1,0 +1,147 @@
+@media (min-width: 1600px) {
+  .dashboard { grid-template-columns: 235px minmax(0, 1fr) 285px; }
+  .terminal-scroll { padding: 22px 36px; }
+  .welcome-content { padding-top: 36px; }
+  .hero-description { font-size: 13px; }
+  .quick-actions { margin-top: 27px; max-width: 670px; }
+  .quick-actions > button { height: 44px; font-size: 12px; }
+  .document-view, .projects-view { padding: 30px 36px; }
+  .identity-copy { padding: 20px; }
+  .identity-copy > h2 { font-size: 25px; }
+}
+@media (max-width: 1200px) {
+  .workstation { padding-left: 15px; padding-right: 15px; }
+  .dashboard { grid-template-columns: 185px minmax(0, 1fr) 225px; }
+  .panel-header { padding-left: 11px; padding-right: 11px; }
+  .telemetry-block { padding-left: 12px; padding-right: 12px; }
+  .topbar-status { display: none; }
+  .terminal-scroll, .document-view, .projects-view { padding-left: 20px; padding-right: 20px; }
+  .terminal-shortcuts { gap: 9px; font-size: 6px; }
+  .identity-copy { padding-left: 14px; padding-right: 14px; }
+  .keyboard-key { height: 28px; }
+  .keyboard-key > small { display: none; }
+  .utility-grid { grid-template-columns: minmax(0, .4fr) minmax(0, .6fr); }
+  .file-name { font-size: 8px; }
+}
+@media (max-width: 1080px) {
+  .dashboard { grid-template-columns: 190px minmax(0, 1fr); }
+  .identity-rail { display: none; }
+  .welcome-content h1 { font-size: 59px; }
+  .utility-grid { grid-template-columns: minmax(0, .4fr) minmax(0, .6fr); }
+  .keyboard-layout { display: none; }
+  .file-list { gap: 2px; padding-left: 8px; padding-right: 8px; }
+}
+@media (max-width: 800px) {
+  .workstation { height: auto; min-height: 100svh; padding: 12px; }
+  .dashboard { display: block; flex: none; min-height: 0; }
+  .telemetry-panel { display: none; }
+  .workspace { height: 650px; }
+  .welcome-content { padding-top: 30px; }
+  .welcome-content h1 { font-size: clamp(44px, 7.5vw, 60px); }
+  .terminal-scroll { padding: 20px 25px; }
+  .utility-grid { grid-template-columns: 1fr; flex: none; }
+  .filesystem-panel { height: 211px; }
+  .file-list { padding: 13px 20px; }
+  .file-name { font-size: 10px; }
+  .keyboard-panel { height: 216px; }
+  .keyboard-layout { display: flex; }
+  .keyboard-key > small { display: block; }
+  .footer-shortcut { display: none; }
+  .statusbar { min-height: 25px; }
+}
+@media (max-width: 600px) {
+  .topbar { gap: 10px; flex-basis: 49px; }
+  .brand { gap: 9px; }
+  .brand-mark { font-size: 31px; }
+  .brand-name { font-size: 10px; padding-left: 9px; letter-spacing: .08em; }
+  .brand-name small { font-size: 6px; letter-spacing: .075em; }
+  .topbar-controls { gap: 5px; }
+  .utility-button { height: 29px; padding: 0 8px; font-size: 8px; gap: 5px; }
+  #soundToggle > span { display: none; }
+  .fullscreen-button { display: none; }
+  .workspace { height: 648px; }
+  .shell-label { display: none; }
+  .workspace-tabs { gap: 0; padding: 0 4px; }
+  .workspace-tabs > button { font-size: 8px; letter-spacing: .025em; padding: 0 4px; }
+  .workspace-tabs > button > span { display: none; }
+  .terminal-scroll { padding: 17px; }
+  .boot-lines { font-size: 9px; }
+  .boot-success { font-size: 8px; }
+  .welcome-content { padding-top: 31px; }
+  .welcome-content h1 { font-size: clamp(37px, 10vw, 56px); }
+  .section-kicker { font-size: 8px; gap: 7px; letter-spacing: .08em; }
+  .hero-role { font-size: 8px; letter-spacing: .13em; }
+  .hero-description { font-size: 10px; line-height: 1.9; }
+  .code-comment { font-size: 9px; }
+  .quick-actions { margin-top: 24px; gap: 8px; }
+  .quick-actions > button { height: 43px; padding: 0 9px; gap: 7px; font-size: 9px; }
+  .quick-actions .icon { width: 13px; height: 13px; }
+  .terminal-hint { font-size: 8px; }
+  .terminal-form { padding: 0 12px; gap: 7px; min-height: 48px; }
+  .prompt-label { font-size: 9px; }
+  .prompt-host { display: none; }
+  .prompt-path { max-width: 76px; }
+  .terminal-form input { font-size: 16px; }
+  .terminal-shortcuts { padding: 0 12px; font-size: 6px; justify-content: space-between; gap: 5px; }
+  .terminal-shortcuts > span:nth-child(4) { display: none; }
+  .shell-ready { margin-left: 0; }
+  .document-view, .projects-view { padding: 22px 17px; }
+  .document-view > h2 { font-size: 34px; }
+  .document-lead { font-size: 11px; }
+  .about-copy { font-size: 10px; }
+  .principle-grid { gap: 8px; }
+  .principle-grid > div { padding: 11px; }
+  .principle-grid h3 { font-size: 11px; }
+  .principle-grid p { font-size: 9px; }
+  .file-badge { font-size: 6px; padding: 4px; }
+  .project-selector { gap: 5px; }
+  .view-heading { display: block; }
+  .view-heading > p { margin-top: 8px; }
+  .view-heading .file-badge { margin-left: auto; }
+  .project-detail { display: block; }
+  .project-preview img { height: auto; aspect-ratio: 960 / 498; }
+  .project-selector button { font-size: 9px; padding: 10px 6px; gap: 5px; }
+  .project-selector button > span { display: none; }
+  .project-title-row h2 { font-size: 24px; }
+  .project-type { font-size: 7px; }
+  .project-summary { margin: 15px 0; padding: 0; border: 0; font-size: 11px; }
+  .project-detail-footer { align-items: flex-start; }
+  .tech-tags span { font-size: 7px; padding: 5px; }
+  .slide-label { font-size: 7px; }
+  .stack-groups { gap: 9px; }
+  .stack-group { padding: 12px; }
+  .stack-heading { font-size: 8px; }
+  .skill-chip { padding: 5px; font-size: 8px; }
+  .skill-mark { min-width: 16px; height: 16px; font-size: 7px; }
+  .contact-code { padding: 12px; font-size: 9px; }
+  .contact-code p { padding-left: 7px; }
+  .contact-actions { gap: 7px; }
+  .contact-actions .primary-button { font-size: 8px; padding: 11px; gap: 7px; }
+  .contact-actions .outline-button { font-size: 8px; padding: 11px; }
+  .filesystem-panel { height: 210px; }
+  .filesystem-panel .panel-header .micro-label { font-size: 6px; }
+  .file-list { gap: 2px; padding: 13px 6px; }
+  .file-button > .icon { width: 31px; height: 29px; }
+  .file-button.is-file > .icon { width: 24px; }
+  .file-name { font-size: 7px; }
+  .file-type { font-size: 5px; }
+  .filesystem-path { font-size: 8px; padding: 0 10px; }
+  .file-count { font-size: 6px; }
+  .filesystem-footer { padding: 0 10px; }
+  .keyboard-panel { display: none; }
+  .statusbar { flex-wrap: wrap; gap: 8px; padding: 2px; font-size: 6px; }
+  .copyright { margin-left: auto; }
+  .system-status { gap: 5px; }
+  .system-status .status-separator { display: none; }
+  .system-status > a { display: none; }
+  .preview-dialog { width: calc(100% - 24px); }
+  .dialog-header { padding: 15px; }
+  .dialog-header h2 { font-size: 23px; }
+  .dialog-footer { padding: 13px; flex-wrap: wrap; font-size: 8px; }
+  .dialog-footer > div { margin-left: auto; }
+  .toast { right: 12px; bottom: 18px; padding: 11px 13px; font-size: 10px; }
+  .command-table > div { grid-template-columns: 110px 1fr; gap: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

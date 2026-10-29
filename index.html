@@ -9,8 +9,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/workstation.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <script src="assets/js/data/portfolio.js" defer></script>
+  <script src="assets/js/ui/project-artwork.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
 </head>
 <body data-theme="cyan">
   <a class="skip-link" href="#workspace">Skip to portfolio</a>
@@ -131,7 +135,7 @@
               </div>
             </section>
             <div class="principle-grid"><div><span>01 / EDUCATION</span><h3>Bachelor of Science in Industrial Engineering</h3><p>Polytechnic University of the Philippines – Biñan Campus</p></div><div><span>02 / CERTIFICATION</span><h3>Civil Service Examination Passer</h3><p><time datetime="2024-08-11">August 11, 2024</time></p></div></div>
-            <a class="outline-button" href="regalang_resume.pdf" download="Rosendo-E-Galang-Resume.pdf"><svg class="icon"><use href="#i-file"/></svg> DOWNLOAD RESUME <svg class="icon"><use href="#i-arrow"/></svg></a>
+            <a class="outline-button" href="assets/documents/regalang_resume.pdf" download="Rosendo-E-Galang-Resume.pdf"><svg class="icon"><use href="#i-file"/></svg> DOWNLOAD RESUME <svg class="icon"><use href="#i-arrow"/></svg></a>
           </section>
 
           <section id="view-projects" class="workspace-view projects-view" role="tabpanel" aria-labelledby="tab-projects" tabindex="0" hidden>
@@ -142,7 +146,7 @@
               <button class="project-preview" id="projectPreview" type="button" aria-label="Open enlarged project brief"><img id="projectImage" alt=""><span class="preview-overlay"><svg class="icon"><use href="#i-fullscreen"/></svg> EXPAND BRIEF</span></button>
               <div class="carousel-controls"><span id="slideLabel" class="slide-label"></span><div class="carousel-navigation"><button id="previousSlide" class="icon-button" type="button" aria-label="Previous project image"><svg class="icon arrow-back"><use href="#i-arrow"/></svg></button><div id="slideDots" class="slide-dots" aria-label="Choose a project image"></div><button id="nextSlide" class="icon-button" type="button" aria-label="Next project image"><svg class="icon"><use href="#i-arrow"/></svg></button></div></div>
               <p class="project-summary" id="projectSummary"></p>
-              <div class="project-detail-footer"><div class="tech-tags" id="projectTech" aria-label="Project focus"></div><a class="text-link" href="regalang_resume.pdf" target="_blank" rel="noopener noreferrer">VIEW RESUME <svg class="icon"><use href="#i-external"/></svg></a></div>
+              <div class="project-detail-footer"><div class="tech-tags" id="projectTech" aria-label="Project focus"></div><a class="text-link" href="assets/documents/regalang_resume.pdf" target="_blank" rel="noopener noreferrer">VIEW RESUME <svg class="icon"><use href="#i-external"/></svg></a></div>
             </article>
           </section>
 
@@ -160,7 +164,7 @@
             <p class="document-lead">Reach me by email or phone, or connect with me on LinkedIn.</p>
             <div class="contact-code"><span class="muted">{</span><p><span>"name"</span>: <b>"Rosendo E. Galang"</b>,</p><p><span>"role"</span>: <b>"Full-Stack Software Engineer"</b>,</p><p><span>"email"</span>: <a href="mailto:rsndo.galang@gmail.com">"rsndo.galang@gmail.com"</a>,</p><p><span>"phone"</span>: <a href="tel:+639561224280">"+63 956 122 4280"</a>,</p><p><span>"location"</span>: <b>"Biñan City, Laguna, Philippines"</b></p><span class="muted">}</span></div>
             <div class="contact-actions"><a class="primary-button" href="mailto:rsndo.galang@gmail.com"><svg class="icon"><use href="#i-mail"/></svg> START A CONVERSATION <svg class="icon"><use href="#i-arrow"/></svg></a><button class="outline-button" id="copyEmail" type="button">COPY EMAIL</button></div>
-            <div class="contact-socials"><a href="https://www.linkedin.com/in/sendo-galang" target="_blank" rel="noopener noreferrer">LINKEDIN <svg class="icon"><use href="#i-external"/></svg></a><a href="regalang_resume.pdf" download="Rosendo-E-Galang-Resume.pdf">DOWNLOAD RESUME <svg class="icon"><use href="#i-file"/></svg></a></div>
+            <div class="contact-socials"><a href="https://www.linkedin.com/in/sendo-galang" target="_blank" rel="noopener noreferrer">LINKEDIN <svg class="icon"><use href="#i-external"/></svg></a><a href="assets/documents/regalang_resume.pdf" download="Rosendo-E-Galang-Resume.pdf">DOWNLOAD RESUME <svg class="icon"><use href="#i-file"/></svg></a></div>
           </section>
         </div>
 
@@ -204,6 +208,6 @@
   <dialog class="preview-dialog" id="previewDialog" aria-labelledby="previewTitle"><div class="dialog-header"><div><span class="section-kicker">PROJECT BRIEF / HIGHLIGHTS</span><h2 id="previewTitle"></h2></div><button class="icon-button" id="closePreview" type="button" aria-label="Close project brief"><svg class="icon"><use href="#i-close"/></svg></button></div><img id="dialogImage" alt=""><div class="dialog-footer"><span id="dialogSlideLabel"></span><div><button class="outline-button" id="dialogPrevious" type="button" aria-label="Previous project brief">← PREVIOUS</button><button class="outline-button" id="dialogNext" type="button" aria-label="Next project brief">NEXT →</button></div></div></dialog>
   <div class="toast" id="toast" role="status"></div>
   <div class="sr-only" id="screenReaderStatus" role="status" aria-live="polite"></div>
-  <noscript><div class="noscript-message">Enable JavaScript to use the interactive workstation. Contact Rosendo at <a href="mailto:rsndo.galang@gmail.com">rsndo.galang@gmail.com</a> or <a href="regalang_resume.pdf" download="Rosendo-E-Galang-Resume.pdf">download his résumé</a>.</div></noscript>
+  <noscript><div class="noscript-message">Enable JavaScript to use the interactive workstation. Contact Rosendo at <a href="mailto:rsndo.galang@gmail.com">rsndo.galang@gmail.com</a> or <a href="assets/documents/regalang_resume.pdf" download="Rosendo-E-Galang-Resume.pdf">download his résumé</a>.</div></noscript>
 </body>
 </html>

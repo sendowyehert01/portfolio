@@ -1,54 +1,8 @@
 (() => {
   'use strict';
 
-  // Portfolio content from regalang_resume.pdf.
-  const EMAIL = 'rsndo.galang@gmail.com';
-  const RESUME = 'regalang_resume.pdf';
-  const projects = [
-    {
-      name: 'Records Management System', slug: 'records-management', type: 'Internal records routing', organisation: 'Governance Commission for GOCCs',
-      summary: 'Led development of the agency’s internal Records Management System. Digitized routing for 1,000+ incoming, outgoing, internal, and acknowledgement receipts monthly, cutting manual processing by 70%.',
-      tags: ['Records routing', 'Workflow digitization'],
-      slides: [
-        { title: 'System overview', metric: '1,000+', metricLabel: 'RECEIPTS ROUTED MONTHLY', headline: 'Digitizing agency records.', points: ['Incoming and outgoing records', 'Internal and acknowledgement receipts', 'Digitized document routing'] },
-        { title: 'Impact & delivery', metric: '70%', metricLabel: 'LESS MANUAL PROCESSING', headline: 'Improving records workflows.', points: ['Replaced manual routing with an internal application', 'Handled 1,000+ receipts per month', 'Led development of the agency system'] }
-      ]
-    },
-    {
-      name: 'ServiceDesk Management System', slug: 'servicedesk-management', type: 'HR service requests', organisation: 'Governance Commission for GOCCs',
-      summary: 'Led development of an internal ServiceDesk Management System for HR service requests from 400+ internal and external employees. The application replaced manual, email-based requests.',
-      tags: ['HR services', 'Request management'],
-      slides: [
-        { title: 'System overview', metric: '400+', metricLabel: 'INTERNAL & EXTERNAL EMPLOYEES', headline: 'HR requests in one system.', points: ['Created an internal HR service request application', 'Served internal and external employees', 'Led development for the agency'] },
-        { title: 'Impact & delivery', metric: 'HR', metricLabel: 'SERVICE REQUEST WORKFLOW', headline: 'Digitizing service requests.', points: ['Replaced manual email-based requests', 'Supported service requests for 400+ employees', 'Built an internal agency management system'] }
-      ]
-    },
-    {
-      name: 'GCG Website', slug: 'gcg-website', type: 'Public-facing agency website', organisation: 'Governance Commission for GOCCs',
-      summary: 'Contributed 10+ pages, features, and modules to the agency’s public-facing website, streamlining access to services and centralizing scattered information. Improved performance and maintainability through modular code and API integration, and reduced walk-in inquiries.',
-      tags: ['Public services', 'API integration'],
-      slides: [
-        { title: 'Website overview', metric: '10+', metricLabel: 'PAGES / FEATURES / MODULES', headline: 'Making services accessible.', points: ['Contributed to the public-facing agency website', 'Streamlined access to agency services', 'Centralized previously scattered information'] },
-        { title: 'Impact & delivery', metric: 'API', metricLabel: 'INTEGRATION & MODULAR CODE', headline: 'Improving the agency website.', points: ['Enhanced website performance and maintainability', 'Used modular code structure and API integration', 'Reduced walk-in inquiries'] }
-      ]
-    },
-    {
-      name: 'Membership Management System', slug: 'membership-management', type: 'Membership data management', organisation: 'Automobile Association of the Philippines',
-      summary: 'Led development of a Membership Management System that stores members’ personal data and replaces spreadsheet-based tracking. Also enhanced payment method integration as a Junior Full-Stack Software Developer.',
-      tags: ['Member records', 'Payment integration'],
-      slides: [
-        { title: 'System overview', metric: 'Members', metricLabel: 'PERSONAL DATA MANAGEMENT', headline: 'Organizing membership data.', points: ['Designed a membership data application', 'Replaced spreadsheet-based tracking', 'Led development for the Automobile Association'] },
-        { title: 'Impact & delivery', metric: 'Payments', metricLabel: 'PAYMENT METHOD INTEGRATION', headline: 'Connecting membership workflows.', points: ['Enhanced payment method integration', 'Developed the full-stack membership application', 'Centralized members’ personal data'] }
-      ]
-    }
-  ];
-  const stack = [
-    { id: 'frontend', name: 'Frontend', tools: [['HTML', '5'], ['CSS', '3'], ['JavaScript', 'JS'], ['TypeScript', 'TS'], ['React.js', 'Re'], ['Next.js', 'N'], ['Alpine.js', 'Al'], ['Vue.js', 'V'], ['Bootstrap', 'B'], ['Tailwind CSS', 'TW']] },
-    { id: 'backend', name: 'Backend', tools: [['Node.js', 'No'], ['Express.js', 'ex'], ['Nest.js', 'Ne'], ['PHP', 'php'], ['Laravel', 'La']] },
-    { id: 'databases', name: 'Databases', tools: [['MongoDB', 'Mo'], ['MySQL', 'My']] },
-    { id: 'tools-practices', name: 'Tools & practices', tools: [['Git', 'Gi'], ['Postman', 'Po'], ['JIRA', 'Ji'], ['QA Testing', 'QA'], ['Agile/Scrum', 'Ag'], ['AWS', 'AWS']] },
-    { id: 'ai-tools', name: 'AI tools & practices', tools: [['ChatGPT', 'AI'], ['Claude', 'Cl'], ['Codex', 'Cx'], ['Windsurf', 'Wi'], ['AI-assisted coding', 'AI'], ['Prompt engineering', 'PE'], ['AI-powered debugging', 'DB'], ['Code optimization', 'CO']] }
-  ];
+  const { EMAIL, RESUME_FILE, RESUME_URL, projects, stack } = window.RosendoOS.portfolio;
+  const { makeProjectArtwork } = window.RosendoOS;
   const views = ['terminal', 'about', 'projects', 'stack', 'contact'];
   const themes = ['cyan', 'amber', 'green'];
   const commands = ['help', 'about', 'projects', 'stack', 'contact', 'resume', 'home', 'ls', 'cd', 'cat', 'open', 'pwd', 'whoami', 'date', 'echo', 'clear', 'theme', 'sound', 'fullscreen', 'reboot'];
@@ -124,26 +78,6 @@
     } catch { /* Sound must never interrupt navigation. */ }
   }
 
-  // Project briefs present the résumé's documented scope and results.
-  function makeProjectArtwork(project, slideIndex) {
-    const accent = getComputedStyle(document.body).getPropertyValue('--accent').trim();
-    const slide = project.slides[slideIndex];
-    const escapeText = (value) => String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    const text = (x, y, value, size = 13, fill = '#a9bdc5', extra = '') => `<text x="${x}" y="${y}" fill="${fill}" font-size="${size}" ${extra}>${escapeText(value)}</text>`;
-    const rect = (x, y, w, h, fill = '#111e27', stroke = '#263e49', radius = 4) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${radius}" fill="${fill}" stroke="${stroke}"/>`;
-    const wrappedText = (x, y, value, maxLength, size, fill = '#a9bdc5') => {
-      const lines = [''];
-      value.split(' ').forEach((word) => {
-        const last = lines.length - 1;
-        if (lines[last] && lines[last].length + word.length + 1 > maxLength) lines.push(word);
-        else lines[last] += `${lines[last] ? ' ' : ''}${word}`;
-      });
-      return lines.map((line, index) => text(x, y + index * (size + 7), line, size, fill)).join('');
-    };
-    const points = slide.points.map((point, index) => rect(385, 210 + index * 64, 27, 27, '#162a32', 'none') + text(391, 229 + index * 64, `0${index + 1}`, 12, accent) + wrappedText(430, 228 + index * 64, point, 53, 13, '#c5d6df')).join('');
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 498"><title>${escapeText(project.name)} — ${escapeText(slide.title)}</title><rect width="960" height="498" fill="#090f15"/><g font-family="monospace">${rect(20, 20, 920, 458, '#0c151e', '#263e49', 7)}${text(48, 51, 'PROJECT BRIEF / HIGHLIGHTS', 11, accent)}${text(718, 51, 'ROSENDO E. GALANG', 11)}<path d="M20 69h920M48 156h864" stroke="#263e49"/>${text(48, 110, project.name, 27, '#dde8ec')}${text(48, 137, project.organisation, 13)}${rect(48, 180, 300, 235)}${text(70, 249, slide.metric, 46, accent)}${wrappedText(70, 277, slide.metricLabel, 31, 10)}<path d="M70 315h256" stroke="#263e49"/>${wrappedText(70, 351, slide.headline, 25, 17, '#dde8ec')}${rect(366, 180, 546, 235)}${points}${text(48, 449, project.type, 12)}${text(912, 449, slide.title.toUpperCase(), 11, accent, 'text-anchor="end"')}</g></svg>`;
-    return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
-  }
 
   const filesystem = new Map([
     ['', [
@@ -151,7 +85,7 @@
       { name: 'projects', type: 'directory', label: `${String(projects.length).padStart(2, '0')} PROJECTS` },
       { name: 'stack', type: 'directory', label: `${String(stack.length).padStart(2, '0')} CATEGORIES` },
       { name: 'contact.json', type: 'file', view: 'contact', label: 'CONTACT' },
-      { name: RESUME, type: 'file', resume: true, label: 'PDF / RESUME' },
+      { name: RESUME_FILE, type: 'file', resume: true, label: 'PDF / RESUME' },
       { name: 'README.md', type: 'file', readme: true, label: 'START HERE' }
     ]],
     ['projects', projects.map((project, index) => ({ name: `${project.slug}.project`, type: 'file', project: index, label: 'PROJECT / BRIEF' }))],
@@ -210,7 +144,7 @@
     $('#fileList').replaceChildren(...files.map((file) => {
       const button = element(file.resume ? 'a' : 'button', `file-button${file.type === 'file' ? ' is-file' : ''}`);
       if (file.resume) {
-        button.href = RESUME;
+        button.href = RESUME_URL;
         button.target = '_blank';
         button.rel = 'noopener noreferrer';
       } else {
@@ -267,11 +201,11 @@
       printOutput(commandEntry, 'Rosendo E. Galang — résumé\nView or download the PDF below.');
       const actions = element('div', 'resume-links');
       const viewLink = element('a', 'outline-button', 'VIEW RESUME');
-      viewLink.href = RESUME;
+      viewLink.href = RESUME_URL;
       viewLink.target = '_blank';
       viewLink.rel = 'noopener noreferrer';
       const downloadLink = element('a', 'outline-button', 'DOWNLOAD RESUME');
-      downloadLink.href = RESUME;
+      downloadLink.href = RESUME_URL;
       downloadLink.download = 'Rosendo-E-Galang-Resume.pdf';
       actions.append(viewLink, downloadLink);
       commandEntry.append(actions);
@@ -289,7 +223,8 @@
     $('#projectTitle').textContent = project.name;
     $('#projectSummary').textContent = project.summary;
     $('#projectTech').replaceChildren(...project.tags.map((tag) => element('span', '', tag)));
-    const image = makeProjectArtwork(project, state.slide);
+    const accent = getComputedStyle(document.body).getPropertyValue('--accent').trim();
+    const image = makeProjectArtwork(project, state.slide, accent);
     $('#projectImage').src = image;
     $('#projectImage').alt = `${project.name}: ${slide.title}. ${slide.metric} ${slide.metricLabel.toLowerCase()}. ${slide.points.join('. ')}.`;
     $('#slideLabel').textContent = `${String(state.slide + 1).padStart(2, '0')} / ${String(project.slides.length).padStart(2, '0')} — ${slide.title}`;
@@ -465,7 +400,7 @@
       case 'clear': case 'cls': clearTerminal(); break;
       case 'pwd': printOutput(entry, cwd()); break;
       case 'whoami': printOutput(entry, `Rosendo E. Galang\nFull-Stack Software Engineer\n2 years of experience\nBiñan City, Laguna, Philippines\n\nWeb applications, internal management systems, and service desk solutions.\nAPI integration and workflow digitization.\n\nEmail: ${EMAIL}\nUse about for experience, education, and certification.`); break;
-      case 'resume': openEntry({ type: 'file', resume: true, name: RESUME }, entry); break;
+      case 'resume': openEntry({ type: 'file', resume: true, name: RESUME_FILE }, entry); break;
       case 'date': printOutput(entry, new Date().toLocaleString(undefined, { dateStyle: 'full', timeStyle: 'long' })); break;
       case 'echo': printOutput(entry, argument); break;
       case 'ls': {
