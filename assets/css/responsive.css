@@ -18,18 +18,11 @@
   .terminal-scroll, .document-view, .projects-view { padding-left: 20px; padding-right: 20px; }
   .terminal-shortcuts { gap: 9px; font-size: 6px; }
   .identity-copy { padding-left: 14px; padding-right: 14px; }
-  .keyboard-key { height: 28px; }
-  .keyboard-key > small { display: none; }
-  .utility-grid { grid-template-columns: minmax(0, .4fr) minmax(0, .6fr); }
-  .file-name { font-size: 8px; }
 }
 @media (max-width: 1080px) {
   .dashboard { grid-template-columns: 190px minmax(0, 1fr); }
   .identity-rail { display: none; }
   .welcome-content h1 { font-size: 59px; }
-  .utility-grid { grid-template-columns: minmax(0, .4fr) minmax(0, .6fr); }
-  .keyboard-layout { display: none; }
-  .file-list { gap: 2px; padding-left: 8px; padding-right: 8px; }
 }
 @media (max-width: 800px) {
   .workstation { height: auto; min-height: 100svh; padding: 12px; }
@@ -39,13 +32,6 @@
   .welcome-content { padding-top: 30px; }
   .welcome-content h1 { font-size: clamp(44px, 7.5vw, 60px); }
   .terminal-scroll { padding: 20px 25px; }
-  .utility-grid { grid-template-columns: 1fr; flex: none; }
-  .filesystem-panel { height: 211px; }
-  .file-list { padding: 13px 20px; }
-  .file-name { font-size: 10px; }
-  .keyboard-panel { height: 216px; }
-  .keyboard-layout { display: flex; }
-  .keyboard-key > small { display: block; }
   .footer-shortcut { display: none; }
   .statusbar { min-height: 25px; }
 }
@@ -118,17 +104,6 @@
   .contact-actions { gap: 7px; }
   .contact-actions .primary-button { font-size: 8px; padding: 11px; gap: 7px; }
   .contact-actions .outline-button { font-size: 8px; padding: 11px; }
-  .filesystem-panel { height: 210px; }
-  .filesystem-panel .panel-header .micro-label { font-size: 6px; }
-  .file-list { gap: 2px; padding: 13px 6px; }
-  .file-button > .icon { width: 31px; height: 29px; }
-  .file-button.is-file > .icon { width: 24px; }
-  .file-name { font-size: 7px; }
-  .file-type { font-size: 5px; }
-  .filesystem-path { font-size: 8px; padding: 0 10px; }
-  .file-count { font-size: 6px; }
-  .filesystem-footer { padding: 0 10px; }
-  .keyboard-panel { display: none; }
   .statusbar { flex-wrap: wrap; gap: 8px; padding: 2px; font-size: 6px; }
   .copyright { margin-left: auto; }
   .system-status { gap: 5px; }

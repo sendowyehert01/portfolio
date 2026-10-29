@@ -12,7 +12,7 @@
   const welcome = $('#terminalWelcome');
   const tabs = [...document.querySelectorAll('[role="tab"]')];
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const state = { view: 'terminal', directory: '', project: 0, slide: 0, theme: 'cyan', sound: false, caps: false, shift: false, ctrl: false };
+  const state = { view: 'terminal', directory: '', project: 0, slide: 0, theme: 'cyan', sound: false };
   const history = [];
   let historyPosition = 0;
   let historyDraft = '';
@@ -26,15 +26,6 @@
   }
   function savePreference(key, value) {
     try { localStorage.setItem(`rosendo-os:${key}`, value); } catch { /* The interface also works without storage. */ }
-  }
-  function makeIcon(name) {
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.classList.add('icon');
-    svg.setAttribute('aria-hidden', 'true');
-    const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-    use.setAttribute('href', `#i-${name}`);
-    svg.append(use);
-    return svg;
   }
   function element(tag, className, text) {
     const node = document.createElement(tag);
@@ -79,19 +70,20 @@
   }
 
 
+  // Virtual paths power terminal commands independently of the page layout.
   const filesystem = new Map([
     ['', [
-      { name: 'about.md', type: 'file', view: 'about', label: 'MARKDOWN' },
-      { name: 'projects', type: 'directory', label: `${String(projects.length).padStart(2, '0')} PROJECTS` },
-      { name: 'stack', type: 'directory', label: `${String(stack.length).padStart(2, '0')} CATEGORIES` },
-      { name: 'contact.json', type: 'file', view: 'contact', label: 'CONTACT' },
-      { name: RESUME_FILE, type: 'file', resume: true, label: 'PDF / RESUME' },
-      { name: 'README.md', type: 'file', readme: true, label: 'START HERE' }
+      { name: 'about.md', type: 'file', view: 'about' },
+      { name: 'projects', type: 'directory' },
+      { name: 'stack', type: 'directory' },
+      { name: 'contact.json', type: 'file', view: 'contact' },
+      { name: RESUME_FILE, type: 'file', resume: true },
+      { name: 'README.md', type: 'file' }
     ]],
-    ['projects', projects.map((project, index) => ({ name: `${project.slug}.project`, type: 'file', project: index, label: 'PROJECT / BRIEF' }))],
-    ['stack', stack.map((group) => ({ name: group.id, type: 'directory', label: `${String(group.tools.length).padStart(2, '0')} TOOLS` }))]
+    ['projects', projects.map((project, index) => ({ name: `${project.slug}.project`, type: 'file', project: index }))],
+    ['stack', stack.map((group) => ({ name: group.id, type: 'directory' }))]
   ]);
-  stack.forEach((group) => filesystem.set(`stack/${group.id}`, group.tools.map(([name]) => ({ name: `${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.tool`, type: 'file', tool: name, group: group.name, label: 'TECHNOLOGY' }))));
+  stack.forEach((group) => filesystem.set(`stack/${group.id}`, group.tools.map(([name]) => ({ name: `${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.tool`, type: 'file', tool: name, group: group.name }))));
 
   function cwd() { return `/home/rosendo${state.directory ? `/${state.directory}` : ''}`; }
   function writeRoute() {
@@ -113,7 +105,6 @@
     views.forEach((name) => { $(`#view-${name}`).hidden = name !== view; });
     if (!preserveDirectory) state.directory = view === 'projects' ? 'projects' : view === 'stack' ? (stack.some((item) => item.id === group) ? `stack/${group}` : 'stack') : '';
     document.querySelectorAll('.stack-group').forEach((node) => node.classList.toggle('is-highlighted', node.dataset.group === group));
-    renderFiles();
     $('#promptPath').textContent = state.directory ? `:~/${state.directory}` : ':~';
     $('#systemStatus').textContent = { terminal: 'SYSTEM READY', about: 'ABOUT.MD OPEN', projects: 'PROJECTS MOUNTED', stack: 'STACK MOUNTED', contact: 'CONNECTION OPEN' }[view];
     if (updateHash) writeRoute();
@@ -132,32 +123,6 @@
     const projectIndex = projects.findIndex((project) => project.slug === detail);
     if (view === 'projects' && projectIndex >= 0) { state.project = projectIndex; state.slide = 0; renderProject(); }
     navigate(views.includes(view) ? view : 'terminal', { updateHash: !views.includes(view), announce: false, group: detail || '' });
-  }
-  function renderFiles() {
-    const directory = state.directory;
-    const files = filesystem.get(directory) || [];
-    $('#fileList').dataset.directory = directory || 'root';
-    $('#fileList').setAttribute('aria-label', `Files in ${cwd()}`);
-    $('#directoryPath').textContent = directory ? `rosendo / ${directory.replaceAll('/', ' / ')}` : 'home / rosendo';
-    $('#fileCount').textContent = `${String(files.length).padStart(2, '0')} ITEMS`;
-    $('#directoryUp').disabled = !directory;
-    $('#fileList').replaceChildren(...files.map((file) => {
-      const button = element(file.resume ? 'a' : 'button', `file-button${file.type === 'file' ? ' is-file' : ''}`);
-      if (file.resume) {
-        button.href = RESUME_URL;
-        button.target = '_blank';
-        button.rel = 'noopener noreferrer';
-      } else {
-        button.type = 'button';
-        const selected = file.project !== undefined ? file.project === state.project : Boolean(file.view && file.view === state.view);
-        button.setAttribute('aria-pressed', String(selected));
-        button.addEventListener('click', () => runCommand(`open /home/rosendo/${directory ? `${directory}/` : ''}${file.name}`));
-      }
-      button.title = file.name;
-      button.setAttribute('aria-label', `Open ${file.name}${file.type === 'directory' ? ' directory' : ''}`);
-      button.append(makeIcon(file.type === 'directory' ? 'folder' : file.project !== undefined || file.tool ? 'code' : 'file'), element('span', 'file-name', `${file.name}${file.type === 'directory' ? '/' : ''}`), element('span', 'file-type', file.label));
-      return button;
-    }));
   }
   function resolvePath(argument = '~') {
     let value = argument;
@@ -254,7 +219,6 @@
     state.project = index;
     state.slide = 0;
     renderProject();
-    renderFiles();
     if (updateHash && state.view === 'projects') writeRoute();
     logEvent(`Opened ${projects[index].name}`);
   }
@@ -480,89 +444,11 @@
     }
     return true;
   }
-  const keyButtons = new Map();
-  function renderKeyboard() {
-    const character = (char, code, shifted = '') => ({ label: char.toUpperCase(), char, code, shifted });
-    const special = (label, code, width = 1, accent = false) => ({ label, code, width, accent });
-    const letters = (word) => [...word].map((letter) => character(letter, `Key${letter.toUpperCase()}`));
-    const rows = [
-      [character('`', 'Backquote', '~'), ...'1234567890'.split('').map((digit, index) => character(digit, `Digit${digit}`, '!@#$%^&*()'[index])), character('-', 'Minus', '_'), character('=', 'Equal', '+'), special('BKSP', 'Backspace', 1.65)],
-      [special('TAB', 'Tab', 1.35), ...letters('qwertyuiop'), character('[', 'BracketLeft', '{'), character(']', 'BracketRight', '}'), character('\\', 'Backslash', '|')],
-      [special('CAPS', 'CapsLock', 1.6), ...letters('asdfghjkl'), character(';', 'Semicolon', ':'), character("'", 'Quote', '"'), special('ENTER ↵', 'Enter', 2.05, true)],
-      [special('SHIFT', 'ShiftLeft', 2), ...letters('zxcvbnm'), character(',', 'Comma', '<'), character('.', 'Period', '>'), character('/', 'Slash', '?'), special('SHIFT', 'ShiftRight', 2.65)],
-      [special('CTRL', 'ControlLeft', 1.3), special('ESC', 'Escape'), special('HOME', 'Home'), { ...character(' ', 'Space'), label: 'S P A C E', width: 6.25 }, special('END', 'End'), special('←', 'ArrowLeft'), special('↓', 'ArrowDown'), special('↑', 'ArrowUp'), special('→', 'ArrowRight')]
-    ];
-    $('#virtualKeyboard').replaceChildren(...rows.map((row) => {
-      const node = element('div', 'keyboard-row');
-      row.forEach((key) => {
-        const button = element('button', `keyboard-key${key.char === undefined ? ' is-special' : ''}${key.accent ? ' is-accent' : ''}${key.code === 'Space' ? ' space-key' : ''}`, key.label);
-        button.type = 'button';
-        button.dataset.code = key.code;
-        button.style.flexGrow = key.width || 1;
-        button.setAttribute('aria-label', key.code === 'Space' ? 'Space' : key.code.startsWith('Shift') ? 'Toggle virtual Shift' : key.code === 'CapsLock' ? 'Toggle virtual Caps Lock' : key.code === 'ControlLeft' ? 'Toggle virtual Control (A, K, L)' : key.code === 'Enter' ? 'Enter: execute command' : key.code === 'Tab' ? 'Tab: complete command' : key.label);
-        if (['CapsLock', 'ShiftLeft', 'ShiftRight', 'ControlLeft'].includes(key.code)) button.setAttribute('aria-pressed', 'false');
-        if (key.shifted) button.append(element('small', '', key.shifted));
-        button.addEventListener('click', () => {
-          button.classList.add('is-pressed');
-          setTimeout(() => button.classList.remove('is-pressed'), 130);
-          pressVirtualKey(key);
-        });
-        keyButtons.set(key.code, button);
-        node.append(button);
-      });
-      return node;
-    }));
-  }
-  function syncModifiers() {
-    for (const [code, pressed] of [['CapsLock', state.caps], ['ShiftLeft', state.shift], ['ShiftRight', state.shift], ['ControlLeft', state.ctrl]]) keyButtons.get(code)?.setAttribute('aria-pressed', String(pressed));
-  }
-  function editSelection(value, backward = false) {
-    let start = input.selectionStart ?? input.value.length;
-    const end = input.selectionEnd ?? start;
-    if (backward && start === end) start = Math.max(0, start - 1);
-    input.setRangeText(value, start, end, 'end');
-    input.dispatchEvent(new Event('input', { bubbles: true }));
-  }
-  function applyControl(letter) {
-    if (letter === 'k') clearTerminal();
-    else if (letter === 'a') input.select();
-    else if (letter === 'l') input.focus({ preventScroll: true });
-    else notify('Virtual Ctrl shortcuts: A select all · K clear · L focus');
-    state.ctrl = false;
-    syncModifiers();
-  }
   function escapeToTerminal() {
     if ($('#previewDialog').open) { $('#previewDialog').close(); return; }
     input.value = '';
     if (state.view !== 'terminal') navigate('terminal');
     input.focus({ preventScroll: true });
-  }
-  function pressVirtualKey(key) {
-    if (key.code === 'CapsLock') { state.caps = !state.caps; syncModifiers(); playSound(480); return; }
-    if (key.code.startsWith('Shift')) { state.shift = !state.shift; syncModifiers(); playSound(480); return; }
-    if (key.code === 'ControlLeft') { state.ctrl = !state.ctrl; syncModifiers(); playSound(480); return; }
-    input.focus({ preventScroll: true });
-    if (state.ctrl && key.char) { applyControl(key.char.toLowerCase()); return; }
-    switch (key.code) {
-      case 'Enter': $('#terminalForm').requestSubmit(); break;
-      case 'Backspace': editSelection('', true); break;
-      case 'Tab': completeInput(); break;
-      case 'Escape': escapeToTerminal(); break;
-      case 'ArrowUp': recallHistory(-1); break;
-      case 'ArrowDown': recallHistory(1); break;
-      case 'ArrowLeft': { const position = input.selectionStart === input.selectionEnd ? Math.max(0, input.selectionStart - 1) : input.selectionStart; input.setSelectionRange(position, position); break; }
-      case 'ArrowRight': { const position = input.selectionStart === input.selectionEnd ? Math.min(input.value.length, input.selectionEnd + 1) : input.selectionEnd; input.setSelectionRange(position, position); break; }
-      case 'Home': input.setSelectionRange(0, 0); break;
-      case 'End': input.setSelectionRange(input.value.length, input.value.length); break;
-      default:
-        if (key.char !== undefined) {
-          const value = /^[a-z]$/.test(key.char) ? (state.caps !== state.shift ? key.char.toUpperCase() : key.char) : state.shift && key.shifted ? key.shifted : key.char;
-          if (input.value.length - (input.selectionEnd - input.selectionStart) + value.length <= 400) editSelection(value);
-          state.shift = false;
-          syncModifiers();
-        }
-    }
-    playSound(600);
   }
 
   // Session telemetry comes from browser APIs; no simulated CPU or network usage.
@@ -657,17 +543,6 @@
     event.preventDefault();
     changeSlide(event.key === 'ArrowLeft' ? -1 : 1);
   }));
-  $('#directoryUp').addEventListener('click', () => runCommand('cd ..'));
-  $('#directoryHome').addEventListener('click', () => runCommand('cd ~'));
-  $('#fileList').addEventListener('keydown', (event) => {
-    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
-    const buttons = [...$('#fileList').children];
-    const index = buttons.indexOf(document.activeElement);
-    if (index < 0) return;
-    event.preventDefault();
-    const next = event.key === 'Home' ? 0 : event.key === 'End' ? buttons.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + buttons.length) % buttons.length;
-    buttons[next].focus();
-  });
   $('#themeToggle').addEventListener('click', () => { setTheme(themes[(themes.indexOf(state.theme) + 1) % themes.length]); playSound(); });
   $('#soundToggle').addEventListener('click', () => setSound(!state.sound));
   $('#fullscreenToggle').addEventListener('click', toggleFullscreen);
@@ -693,28 +568,17 @@
   input.addEventListener('keydown', (event) => {
     if (event.isComposing) return;
     if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); clearTerminal(); return; }
-    if (state.ctrl && event.key.length === 1) { event.preventDefault(); applyControl(event.key.toLowerCase()); return; }
     if (event.key === 'ArrowUp' || event.key === 'ArrowDown') { event.preventDefault(); recallHistory(event.key === 'ArrowUp' ? -1 : 1); }
     if (event.key === 'Tab' && !event.shiftKey && input.value.trim() && completeInput()) event.preventDefault();
     if (event.key.length === 1 || event.key === 'Backspace') playSound(600);
   });
-  const keyboardStatus = () => {
-    const dot = element('span', 'status-dot');
-    $('#keyboardState').replaceChildren(dot, document.createTextNode(document.activeElement === input ? ' INPUT ACTIVE' : ' CLICK TO TYPE'));
-  };
-  input.addEventListener('focus', keyboardStatus);
-  input.addEventListener('blur', keyboardStatus);
-  $('#virtualKeyboard').addEventListener('pointerdown', (event) => { if (event.target.closest('button')) event.preventDefault(); });
   document.addEventListener('keydown', (event) => {
-    keyButtons.get(event.code)?.classList.add('is-pressed');
     if (event.isComposing) return;
     const editing = event.target.closest('input, textarea, [contenteditable="true"]');
     if (!editing && !$('#previewDialog').open && event.key === '/' && !event.ctrlKey && !event.metaKey && !event.altKey) { event.preventDefault(); input.focus({ preventScroll: true }); }
     if (event.key === 'Escape' && !$('#previewDialog').open) { event.preventDefault(); escapeToTerminal(); }
     if (event.altKey && !event.ctrlKey && /^[1-5]$/.test(event.key) && !$('#previewDialog').open) { event.preventDefault(); navigate(views[Number(event.key) - 1], { focus: true }); }
   });
-  document.addEventListener('keyup', (event) => keyButtons.get(event.code)?.classList.remove('is-pressed'));
-  window.addEventListener('blur', () => { keyButtons.forEach((button) => button.classList.remove('is-pressed')); state.shift = false; state.ctrl = false; syncModifiers(); });
   document.addEventListener('visibilitychange', () => { frameCount = 0; sampleTime = performance.now(); });
   window.addEventListener('hashchange', applyRoute);
   window.addEventListener('popstate', applyRoute);
@@ -722,7 +586,6 @@
   window.addEventListener('offline', () => { updateConnection(); logEvent('Browser connection offline'); });
 
   renderStack();
-  renderKeyboard();
   $('#memorySegments').replaceChildren(...Array.from({ length: 24 }, () => element('span')));
   $('#year').textContent = new Date().getFullYear();
   const userAgent = navigator.userAgent;

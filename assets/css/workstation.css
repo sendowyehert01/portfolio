@@ -243,46 +243,6 @@ kbd { font: inherit; color: var(--muted); }
 .event-log li { display: flex; gap: 9px; align-items: baseline; font-size: 7px; color: var(--muted); }
 .event-log time { color: var(--dim); font-size: 7px; font-variant-numeric: tabular-nums; }
 .event-log li:first-child { color: var(--accent); }
-.utility-grid { display: grid; grid-template-columns: minmax(0, .38fr) minmax(0, .62fr); flex: 0 0 218px; gap: 12px; min-height: 0; }
-.filesystem-panel { display: flex; flex-direction: column; overflow: hidden; }
-.filesystem-path { display: flex; align-items: center; gap: 8px; flex: 0 0 34px; padding: 0 13px; border-bottom: 1px solid var(--line); background: rgba(var(--accent-rgb), .01); font-size: 9px; }
-.filesystem-path .icon-button { width: 21px; height: 21px; border: 0; }
-.filesystem-path .icon { width: 12px; height: 12px; }
-#directoryHome { padding: 0; color: var(--accent); border: 0; background: transparent; font-size: 13px; }
-#directoryHome:hover { color: var(--text); }
-.path-separator { color: var(--dim); }
-#directoryPath { color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.file-count { margin-left: auto; white-space: nowrap; font-size: 7px; color: var(--dim); }
-.file-list { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; flex: 1; min-height: 0; padding: 12px 13px; }
-.file-list[data-directory='projects'] { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.file-list[data-directory='stack'] { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-.file-list[data-directory^='stack/'] { display: flex; overflow-x: auto; }
-.file-list[data-directory^='stack/'] .file-button { flex: 1 0 82px; }
-.file-button { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; min-width: 0; border: 1px solid transparent; background: transparent; color: var(--muted); padding: 7px 3px; }
-.file-button > .icon { color: var(--accent); width: 36px; height: 34px; stroke-width: 1; fill: rgba(var(--accent-rgb), .035); }
-.file-button.is-file > .icon { width: 28px; }
-.file-name { font-size: 9px; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.file-type { color: var(--dim); font-size: 6px; letter-spacing: .07em; }
-.file-button:hover, .file-button[aria-pressed='true'] { border-color: var(--line); background: rgba(var(--accent-rgb), .05); color: var(--accent); }
-.file-button[aria-pressed='true']::after { content: ''; position: absolute; bottom: 0; width: 20px; height: 1px; background: var(--accent); }
-.filesystem-footer { display: flex; align-items: center; justify-content: space-between; padding: 0 13px; flex: 0 0 24px; border-top: 1px solid var(--line); font-size: 6px; letter-spacing: .04em; color: var(--dim); }
-.filesystem-footer > span:first-child { display: flex; gap: 6px; align-items: center; }
-.filesystem-footer .status-dot { width: 3px; height: 3px; }
-.keyboard-panel { overflow: hidden; }
-.keyboard-panel .panel-header { gap: 15px; }
-.keyboard-state { display: flex; align-items: center; gap: 6px; font-size: 7px; color: var(--muted); margin-left: auto; }
-.keyboard-state .status-dot { width: 3px; height: 3px; }
-.keyboard-layout { color: var(--dim); font-size: 7px; }
-.keyboard { display: flex; flex-direction: column; gap: 4px; padding: 11px 12px; }
-.keyboard-row { display: flex; gap: 4px; }
-.keyboard-key { display: flex; justify-content: center; align-items: center; flex: 1; min-width: 0; height: 28px; border: 1px solid var(--line); background: rgba(var(--accent-rgb), .018); color: var(--muted); font-size: 10px; position: relative; padding: 0 3px; user-select: none; }
-.keyboard-key > small { position: absolute; top: 3px; left: 5px; font-size: 6px; color: var(--dim); }
-.keyboard-key.is-special { font-size: 7px; color: var(--muted); }
-.keyboard-key.is-accent { color: var(--accent); border-color: var(--dim); background: rgba(var(--accent-rgb), .07); }
-.keyboard-key:hover { color: var(--accent); background: rgba(var(--accent-rgb), .08); border-color: var(--dim); }
-.keyboard-key.is-pressed, .keyboard-key[aria-pressed='true'] { background: var(--accent); color: var(--bg); border-color: var(--accent); box-shadow: 0 0 12px rgba(var(--accent-rgb), .1); }
-.keyboard-key.is-pressed > small { color: var(--bg); }
-.keyboard-key.space-key { letter-spacing: .12em; color: var(--dim); }
 .statusbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex: 0 0 18px; font-size: 7px; letter-spacing: .06em; color: var(--dim); }
 .system-status { display: flex; align-items: center; gap: 7px; }
 .system-status > .status-dot { width: 4px; height: 4px; }

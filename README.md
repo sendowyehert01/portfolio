@@ -44,12 +44,11 @@ The terminal's virtual filesystem is separate from these real folders. `RESUME_F
 
 ## Explore the workstation
 
-- Use the section tabs, welcome shortcuts, or file explorer to navigate.
+- Use the section tabs, welcome shortcuts, or terminal commands to navigate.
 - Type `help` in the terminal for clickable commands.
 - Try `cd ~/projects`, `open records-management`, `cat ~/about.md`, `resume`, and `ls`.
 - Use Up/Down for command history, Tab for completion, and Ctrl+K to clear.
 - Press `/` to focus the command prompt, Alt+1–5 to switch sections, or Escape to return to the terminal.
-- The virtual keyboard supports typing, Shift, Caps Lock, editing, history, and Ctrl+A/K/L.
 - Select a project and browse its overview and results; expand a project brief for a larger view. Arrow keys and Escape work in the dialog.
 - Switch between cyan, amber, and green themes. Theme and sound preferences are stored locally; sound starts off.
 
